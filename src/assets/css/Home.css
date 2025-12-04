@@ -1,101 +1,44 @@
-/* Container */
 .home-container {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f9fafb;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    background-color: #f9fafb
-}
-
-/* Main content area */
-.home-main {
-    flex: 1;
-    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
 }
 
-/* Card in the center */
-.home-card {
-    background-color: #ffffff;
-    padding: 80px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-}
-
-/* Heading */
 .home-title {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 3rem;
+    font-weight: 700;
     margin-bottom: 24px;
     color: #111827;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
-/* Welcome text */
 .home-text {
     color: #4b5563;
     max-width: 700px;
     margin: 0 auto;
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 1.8;
+    padding: 0 10px;
 }
 
-/* User Picture */
-.user-pic {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-top: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.home-text strong {
+    color: #2563eb;
 }
 
-/* Logout button */
-.logout-btn {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding: 0.8rem 1.8rem;
-    background-color: #dc2626;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.logout-btn:hover {
-    background-color: #b91c1c;
-    transform: scale(1.05);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-    .home-card {
-        flex-direction: column;
-        padding: 80px 30px;
-        margin: 30px;
-    }
-
     .home-title {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
     }
 
     .home-text {
         font-size: 1rem;
-    }
-
-    .logout-btn {
-        font-size: 1rem;
-        padding: 0.7rem 1.4rem;
-    }
-
-    .user-pic {
-        width: 65px;
-        height: 65px;
+        line-height: 1.6;
     }
 }
+
