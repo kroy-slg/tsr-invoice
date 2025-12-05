@@ -25,10 +25,10 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/get-started" element={<GetStarted user={user} onLogin={setUser} onLogout={() => setUser(null)} />}/>
+                <Route path="/get-started" element={null}/>
                 <Route path="/main-container" element={<MainLayout />} />
-                <Route path="/products/payroll" element={<h1>Payroll Page</h1>} />
-                <Route path="/products/invoice" element={<h1>Invoice Page</h1>} />
+                <Route path="/products/payroll" element={null}/>
+                <Route path="/products/invoice" element={<GetStarted user={user} onLogin={setUser} onLogout={() => setUser(null)} />} />
             </Routes>
         </>
     );
