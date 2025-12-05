@@ -11,7 +11,7 @@ const Profile = ({ user, onLogOut }) => {
             </div>
 
             <div className="profile-side-bar">
-                <Sidebar user={user} />
+                <Sidebar user={user} onLogout={onLogOut} />
             </div>
         </div>
     );

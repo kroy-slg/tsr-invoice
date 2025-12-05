@@ -9,6 +9,7 @@ import {useState} from "react";
 import MainLayout from "./components/layout/MainLayout.jsx";
 import GetStarted from "./components/pages/GetStarted.jsx";
 import Customers from "./components/pages/Customers.jsx";
+import Products from "./components/pages/Products.jsx";
 
 function App() {
     const [user, setUser] = useState(null);
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/get-started" element={null}/>
                 <Route path="/customers" element={<Customers />} />
+                <Route path="/products" element={<Products />} />
                 <Route path="/main-container" element={<MainLayout />} />
                 <Route path="/products/payroll" element={null}/>
                 <Route path="/products/invoice" element={<GetStarted user={user} onLogin={setUser} onLogout={() => setUser(null)} />} />
