@@ -96,7 +96,7 @@ const Products = ({ user, onLogout }) => {
 
     return (
         <div className="products-container">
-            <Sidebar onLogout={onLogout} />
+            <Sidebar user={user} onLogout={onLogout} />
             <main className="products-main">
                 <TopHeader user={user} />
 
