@@ -8,51 +8,69 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
 
-    // Scroll listener for shadow effect
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Close menu when route changes
     useEffect(() => {
         setMenuOpen(false);
     }, [location]);
 
-    const navItems = [
-        { path: "/", label: "Home" },
-        { path: "/about", label: "About" },
-        { path: "/services", label: "Services" },
-        { path: "/contact", label: "Contact" },
-        { path: "/get-started", label: "Get Started" },
-    ];
-
     return (
         <header className={`navbar-main ${scrolled ? "scrolled" : ""}`}>
-            <div className="navbar-brand">TSR Invoice</div>
 
-            {/* Hamburger toggle */}
+            {/* LEFT MENU — BRAND NAME */}
+            <div className="navbar-left">
+                <div className="navbar-brand">TSR Invoice</div>
+            </div>
+
+
+            {/* CENTER MENU ITEMS */}
+            <ul className={`navbar-center ${menuOpen ? "open" : ""}`}>
+
+                {/* ==== PRODUCTS WITH SUBMENU ==== */}
+                <li className="nav-dropdown">
+                    Products ▾
+                    <ul className="dropdown-menu">
+                        <li>
+                            <Link to="/products/payroll">Payroll</Link>
+                        </li>
+                        <li>
+                            <Link to="/products/invoice">Invoice</Link>
+                        </li>
+                    </ul>
+                </li>
+
+                <li className={location.pathname === "/about" ? "active" : ""}>
+                    <Link to="/about">About</Link>
+                </li>
+
+                <li className={location.pathname === "/services" ? "active" : ""}>
+                    <Link to="/services">Services</Link>
+                </li>
+
+                <li className={location.pathname === "/contact" ? "active" : ""}>
+                    <Link to="/contact">Contact</Link>
+                </li>
+            </ul>
+
+
+            {/* RIGHT MENU ITEM - Get Started*/}
+            <div className="navbar-right">
+                <Link to="/get-started" className="get-started-btn">
+                    Get Started
+                </Link>
+            </div>
+
+            {/* MOBILE HAMBURGER */}
             <button
                 className="menu-toggle"
                 onClick={() => setMenuOpen(!menuOpen)}
-                aria-label="Toggle Menu"
             >
                 {menuOpen ? <FaTimes /> : <FaBars />}
             </button>
-
-            <ul className={`nav-list ${menuOpen ? "open" : ""}`}>
-                {navItems.map((item) => (
-                    <li
-                        key={item.path}
-                        className={`nav-item ${
-                            location.pathname === item.path ? "active" : ""
-                        }`}
-                    >
-                        <Link to={item.path}>{item.label}</Link>
-                    </li>
-                ))}
-            </ul>
         </header>
     );
 };
