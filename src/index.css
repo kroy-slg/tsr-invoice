@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+    body {
+        background: white !important;
+    }
+
+    .print\:hidden {
+        display: none !important;
+    }
+
+    @page {
+        margin: 2cm;
+    }
+}

@@ -10,9 +10,22 @@ import MainLayout from "./components/layout/MainLayout.jsx";
 import GetStarted from "./components/pages/GetStarted.jsx";
 import Customers from "./components/pages/Customers.jsx";
 import Products from "./components/pages/Products.jsx";
+import {AuthForm} from "./components/AuthForm.jsx";
+import {useAuth} from "./contexts/AuthContext.jsx";
+import {Dashboard} from "./components/Dashboard.jsx";
 
 function App() {
     const [user, setUser] = useState(null);
+
+    const {user1, loading } = useAuth();
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center">
+                <div className="text-gray-600 text-lg">Loading...</div>
+            </div>
+        );
+    }
+
     return (
         <>
             <Navbar />
@@ -32,10 +45,32 @@ function App() {
                 <Route path="/products" element={<Products user={user} onLogin={setUser} onLogout={() => setUser(null)} />} />
                 <Route path="/main-container" element={<MainLayout />} />
                 <Route path="/products/payroll" element={null}/>
-                <Route path="/products/invoice" element={null} />
+                <Route path="/products/invoice" element={user1 ? (<Dashboard />) : (<AuthForm />)}
+                />
             </Routes>
         </>
     );
 }
 
 export default App;
+
+
+// import { useAuth } from './contexts/AuthContext';
+// import { AuthForm } from './components/AuthForm';
+// import { Dashboard } from './components/Dashboard';
+//
+// function App() {
+//     const { user, loading } = useAuth();
+//
+//     if (loading) {
+//         return (
+//             <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center">
+//                 <div className="text-gray-600 text-lg">Loading...</div>
+//             </div>
+//         );
+//     }
+//
+//     return user ? <Dashboard /> : <AuthForm />;
+// }
+//
+// export default App;
